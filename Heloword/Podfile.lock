@@ -1,0 +1,19 @@
+PODS:
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - YYKit (1.0.6):
+    - YYKit/no-arc (= 1.0.6)
+  - YYKit/no-arc (1.0.6)
+
+DEPENDENCIES:
+  - SDWebImage (~> 3.7.0)
+  - YYKit (~> 1.0.1)
+
+SPEC CHECKSUMS:
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  YYKit: a80c77ab7be226ebe539ef1495dfc25d5766d61e
+
+PODFILE CHECKSUM: a68f4c22b7d5665f265c1c87e9f6c4a2b83c03cc
+
+COCOAPODS: 1.0.0.beta.4
