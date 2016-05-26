@@ -7,8 +7,13 @@
 //
 
 #import "MYTableViewController.h"
+#import "UIImageView+WebCache.h"
+
+
 
 @interface MYTableViewController ()
+
+@property (nonatomic ,strong) NSArray *imageUrlArray;
 
 @end
 
@@ -22,6 +27,34 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSArray *links = @[
+                       /*
+                        You can add your image url here.
+                        */
+                       
+                       // progressive jpeg
+                       @"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg",
+                       
+                     
+                       
+                       // jpg: https://dribbble.com/snootyfox
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2047158/beerhenge.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2016158/avalanche.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1833469/porter.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1521183/farmers.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1391053/tents.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1399501/imperial_beer.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1488711/fishin.jpg",
+                       @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1466318/getaway.jpg",
+                       
+                       // animated webp and apng: http://littlesvr.ca/apng/gif_apng_webp.html
+                       @"http://littlesvr.ca/apng/images/BladeRunner.png",
+                       @"http://littlesvr.ca/apng/images/Contact.webp",
+                       ];
+
+    self.imageUrlArray = links;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,14 +76,22 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xxxx" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xxxx"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"xxxx"];
     }
     
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrlArray[indexPath.row]] placeholderImage:nil options:SDWebImageProgressiveDownload completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+    }];
+    
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
 
 /*
 // Override to support conditional editing of the table view.
